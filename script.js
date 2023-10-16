@@ -50,7 +50,7 @@ function createAndPopulateCards(data) {
     cardImage.style.height = "82px";
     cardImage.style.width = "82px";
     cardTitle.textContent = cardData.condition.text;
-    cardText.textContent = `${cardData.temp_c} °C`;
+    cardText.textContent = `${Math.floor(cardData.temp_c)} °C`;
 
     cardBody.appendChild(hour);
     cardBody.appendChild(cardImage);
@@ -122,8 +122,8 @@ function createAndPopulateList(data) {
     iconDay.style.height = "42px";
     iconDay.style.width = "42px";
     iconDay.style.marginLeft = dayNow === dayDate ? "50px" : "";
-    minTemperature.textContent = `${cardData.day.mintemp_c} °C`;
-    maxTemperature.textContent = `${cardData.day.maxtemp_c} °C`;
+    minTemperature.textContent = `${Math.floor(cardData.day.mintemp_c)} °C`;
+    maxTemperature.textContent = `${Math.floor(cardData.day.maxtemp_c)} °C`;
 
     list.appendChild(day);
     list.appendChild(iconDay);
@@ -159,7 +159,7 @@ function updatedLayout(response) {
   city.innerHTML = response.location.name;
   hours.innerHTML = response.location.localtime.split(" ")[1];
   weatherType.innerHTML = response.current.condition.text;
-  temperature.innerHTML = `${response.current.temp_c} °C`;
+  temperature.innerHTML = `${Math.floor(response.current.temp_c)} °C`;
   imageTemperature.src = response.current.condition.icon;
   imageTemperature.style.height = "144px";
   imageTemperature.style.width = "144px";
