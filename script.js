@@ -136,7 +136,7 @@ function createAndPopulateList(data) {
 
 function updatedLayout(response) {
   const backgroundColor = document.getElementById("background-color");
-  backgroundColor.style.height = "100%";
+  backgroundColor.style.height = "100vh";
   const city = document.getElementById("city");
   const hours = document.getElementById("hours");
   const weatherType = document.getElementById("weather-type");
@@ -198,7 +198,7 @@ function uploadWeatherForecast(latitude, longitude) {
     if (this.readyState == 4) {
       if (this.status >= 200 && this.status < 300) {
         const response = JSON.parse(xhttp.responseText);
-
+        console.log(response);
         updatedLayout(response);
 
         removeLoading();
