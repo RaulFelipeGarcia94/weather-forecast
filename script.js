@@ -1,3 +1,15 @@
+// Fix mobile 100vh issues by setting a CSS variable --vh based on window.innerHeight
+function setVh() {
+  // --vh will be equal to 1% of the viewport height
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
+
+// Initialize and update on resize/orientation change
+setVh();
+window.addEventListener("resize", setVh);
+window.addEventListener("orientationchange", setVh);
+
 function removeLoading() {
   const loading = document.getElementById("loading");
   loading.classList.add("d-none");
@@ -136,7 +148,8 @@ function createAndPopulateList(data) {
 
 function updatedLayout(response) {
   const backgroundColor = document.getElementById("background-color");
-  backgroundColor.style.height = "100vh";
+  // Ensure height uses the --vh variable (works better on mobile browsers)
+  backgroundColor.style.height = "calc(var(--vh, 1vh) * 100)";
   const city = document.getElementById("city");
   const hours = document.getElementById("hours");
   const weatherType = document.getElementById("weather-type");
