@@ -148,8 +148,7 @@ function createAndPopulateList(data) {
 
 function updatedLayout(response) {
   const backgroundColor = document.getElementById("background-color");
-  // Ensure height uses the --vh variable (works better on mobile browsers)
-  backgroundColor.style.height = "calc(var(--vh, 1vh) * 100)";
+  backgroundColor.style.minHeight = "calc(var(--vh, 1vh) * 100)";
   const city = document.getElementById("city");
   const hours = document.getElementById("hours");
   const weatherType = document.getElementById("weather-type");
